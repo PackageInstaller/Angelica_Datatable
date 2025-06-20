@@ -20,8 +20,7 @@ def fetch_remote_version_json():
 
 def save_version_json(json_text):
     with open("version.json", "w", encoding="utf-8") as f:
-        json_text = json.dumps(json.loads(json_text), indent=4)
-        f.write(json_text)
+        f.write(json.dumps(json.loads(json_text), indent=4))
 
 def get_local_version():
     if os.path.exists("version.json"):
