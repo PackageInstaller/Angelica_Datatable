@@ -20,6 +20,7 @@ def fetch_remote_version_json():
 
 def save_version_json(json_text):
     with open("version.json", "w", encoding="utf-8") as f:
+        json_text = json.dumps(json.loads(json_text), indent=4)
         f.write(json_text)
 
 def get_local_version():
@@ -56,7 +57,7 @@ def decrypt_file(encrypted_file_path):
     salt = encrypted_data[-16:]  # 盐
 
     key = PBKDF2(
-        PBKDF2_KEY.encode('utf-8'),
+        PBKDF2_KEY,
         salt,
         dkLen=16,  # AES-128
         count=1010,
